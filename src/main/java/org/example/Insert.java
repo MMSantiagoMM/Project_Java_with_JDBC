@@ -1,0 +1,34 @@
+package org.example;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class Insert {
+    public static void main(String[] args) {
+        Connection myConnection;
+        PreparedStatement myPreparedStatement;
+        ResultSet myResultSet;
+
+        try {
+            myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testProject","root","");
+            System.out.println("Connection is successful");
+            String sql = "insert into employees (first_name, second_name, area) values (?,?,?)";
+
+            myPreparedStatement = myConnection.prepareStatement(sql);
+            myPreparedStatement.setString(1,"Maria");
+            myPreparedStatement.setString(2,"Duarte");
+            myPreparedStatement.setString(3,"Human resources");
+
+            int rowsAffected = myPreparedStatement.executeUpdate();
+
+            if(rowsAffected > 0){
+                System.out.println("Creating new employee");
+            }
+
+        }catch (Exception e){
+            System.out.println("Something wrong happened");
+        }
+    }
+}
