@@ -12,6 +12,7 @@ public class Delete {
         Statement myStatement;
         ResultSet myResultSet;
 
+
         try {
             myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testProject","root","");
             System.out.println("Connection is successful");

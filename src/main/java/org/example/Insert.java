@@ -12,14 +12,14 @@ public class Insert {
         ResultSet myResultSet;
 
         try {
-            myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/testProject","root","");
+            myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/platziDB","black-programmer","N3wPassw0rd*");
             System.out.println("Connection is successful");
-            String sql = "insert into employees (first_name, second_name, area) values (?,?,?)";
+            String sql = "insert into Usuario (first_name, second_name, area) values (?,?,?)";
 
             myPreparedStatement = myConnection.prepareStatement(sql);
-            myPreparedStatement.setString(1,"Maria");
-            myPreparedStatement.setString(2,"Duarte");
-            myPreparedStatement.setString(3,"Human resources");
+            myPreparedStatement.setString(1,"Santiago");
+            myPreparedStatement.setString(2,"Mapura");
+            myPreparedStatement.setString(3,"Software");
 
             int rowsAffected = myPreparedStatement.executeUpdate();
 
@@ -28,7 +28,7 @@ public class Insert {
             }
 
         }catch (Exception e){
-            System.out.println("Something wrong happened");
+            System.out.println("Something wrong happened " + e);
         }
     }
 }
